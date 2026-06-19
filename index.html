@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typeless 用嘴思考课程同步页</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --paper: #fffdf7;
+      --ink: #171717;
+      --muted: #69635a;
+      --line: #ded8cd;
+      --teal: #166b68;
+      --teal-soft: #d9eeeb;
+      --amber: #b56415;
+      --amber-soft: #f3dfc7;
+      --green: #3f6f36;
+      --green-soft: #dfead7;
+      --rose: #a24545;
+      --rose-soft: #f0d8d5;
+      --blue: #315f86;
+      --blue-soft: #dce8f1;
+      --shadow: 0 18px 50px rgba(23, 23, 23, 0.08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.72;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+      background: rgba(246, 244, 239, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 190px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      white-space: nowrap;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav a:hover {
+      background: rgba(23, 23, 23, 0.06);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 58px 22px 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .kicker-line {
+      width: 34px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+      max-width: 730px;
+      margin: 18px 0 0;
+      color: #3f3b35;
+      font-size: 19px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button {
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .hero-visual {
+      min-height: 392px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .voice-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .status-pill {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+    }
+
+    .wave {
+      height: 116px;
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      align-items: end;
+      gap: 5px;
+      padding: 14px 0;
+    }
+
+    .wave span {
+      display: block;
+      border-radius: 999px 999px 4px 4px;
+      background: var(--teal);
+      min-height: 18px;
+    }
+
+    .wave span:nth-child(2n) {
+      background: var(--amber);
+    }
+
+    .wave span:nth-child(3n) {
+      background: var(--blue);
+    }
+
+    .voice-output {
+      border-left: 4px solid var(--teal);
+      padding-left: 16px;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      background: #fbf7ee;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px 70px;
+    }
+
+    section {
+      padding: 42px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .section-eyebrow {
+      color: var(--amber);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 5px 0 0;
+      font-size: 34px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .section-desc {
+      margin: 0;
+      color: #49443d;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(23, 23, 23, 0.04);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      margin: 0;
+      color: #514b42;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .tag.teal {
+      background: var(--teal-soft);
+      color: var(--teal);
+    }
+
+    .tag.amber {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .tag.green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .tag.rose {
+      background: var(--rose-soft);
+      color: var(--rose);
+    }
+
+    .callout {
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #171717;
+      color: #fff;
+    }
+
+    .callout p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 18px;
+    }
+
+    .callout strong {
+      color: #fff;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      min-height: 138px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      width: 14px;
+      height: 2px;
+      background: var(--line);
+    }
+
+    .flow-step b {
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .flow-step span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .compare {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0ebe2;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .day {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding: 14px;
+    }
+
+    .day-label {
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .day h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+    }
+
+    .day p {
+      margin: 0;
+      color: #514b42;
+    }
+
+    .prompt {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .prompt-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: #f0ebe2;
+      font-weight: 900;
+    }
+
+    .copy {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 7px 10px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    pre {
+      margin: 0;
+      padding: 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #2d2924;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.68;
+    }
+
+    .quote {
+      margin: 0;
+      border-left: 4px solid var(--amber);
+      padding: 4px 0 4px 16px;
+      color: #39342e;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 940px) {
+      .hero,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .grid.three,
+      .grid.four,
+      .grid.two,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-top: 34px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      .hero-subtitle,
+      .section-desc,
+      .callout p {
+        font-size: 16px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .day {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .topbar,
+      .hero-actions,
+      .copy {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero,
+      main {
+        max-width: none;
+      }
+
+      .card,
+      .hero-visual,
+      .prompt,
+      .compare,
+      .day {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">T</div>
+          <div>Typeless<br>课程同步页</div>
+        </div>
+        <nav class="nav" aria-label="页面导航">
+          <a href="#why">为什么</a>
+          <a href="#model">核心模型</a>
+          <a href="#tools">工具与硬件</a>
+          <a href="#scenes">使用场景</a>
+          <a href="#workflow">工作流</a>
+          <a href="#plan">7 天练习</a>
+          <a href="#templates">模板</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div>
+        <div class="kicker"><span class="kicker-line"></span>根据录音转写整理，适合发给新同学预习</div>
+        <h1>把 Typeless 当成“用嘴思考”的入口，而不是普通语音输入法。</h1>
+        <p class="hero-subtitle">
+          这门课的核心不是推荐一个 App，而是训练一种 AI 时代的输出习惯：把脑内压缩、反刍、模糊的思考，快速说出来，交给 AI 结构化，再沉淀成内容、任务、项目和个人智力资产。
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#plan">从 7 天练习开始</a>
+          <a class="button secondary" href="#templates">复制口述模板</a>
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-label="语音输入速度示意">
+        <div class="voice-panel-head">
+          <span>Brain to text pipeline</span>
+          <span class="status-pill">低摩擦输出</span>
+        </div>
+        <div class="wave" aria-hidden="true">
+          <span style="height: 42%"></span><span style="height: 64%"></span><span style="height: 36%"></span><span style="height: 88%"></span>
+          <span style="height: 58%"></span><span style="height: 30%"></span><span style="height: 76%"></span><span style="height: 48%"></span>
+          <span style="height: 92%"></span><span style="height: 54%"></span><span style="height: 34%"></span><span style="height: 70%"></span>
+          <span style="height: 46%"></span><span style="height: 84%"></span><span style="height: 60%"></span><span style="height: 38%"></span>
+          <span style="height: 96%"></span><span style="height: 52%"></span><span style="height: 68%"></span><span style="height: 28%"></span>
+          <span style="height: 80%"></span><span style="height: 44%"></span><span style="height: 72%"></span><span style="height: 50%"></span>
+        </div>
+        <p class="voice-output">
+          “真正限制输出的瓶颈不是设备，而是意识的清晰程度。Typeless 的价值，是把模糊意识推入语言结构。”
+        </p>
+        <div class="metrics">
+          <div class="metric"><b>4x</b><span>源头输出提速</span></div>
+          <div class="metric"><b>10x</b><span>AI 思维衡量标准</span></div>
+          <div class="metric"><b>0.5s</b><span>说完到发出的理想摩擦</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <main>
+      <section id="why">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Why It Matters</div>
+            <h2>这门课真正想教的，是“输出系统”的升级。</h2>
+          </div>
+          <p class="section-desc">
+            Typeless、Whisperflow、Vocore、Whisper 这些名字只是入口。关键是你是否能把原本只能在办公桌前发生的生产级输出，扩展到散步、通勤、健身、晨间规划、项目布置和内容创作的全部场景。
+          </p>
+        </div>
+
+        <div class="grid four">
+          <article class="card">
+            <span class="tag teal">01</span>
+            <h3>不是转文字</h3>
+            <p>普通语音输入解决“能不能识别”，Typeless 这类工具解决“能不能几乎零摩擦地把思考变成可用文本”。</p>
+          </article>
+          <article class="card">
+            <span class="tag amber">02</span>
+            <h3>不是省时间</h3>
+            <p>AI 使用的核心衡量不应是省了多少分钟，而是你是否把输出量级放大了 10 倍。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">03</span>
+            <h3>不是买工具</h3>
+            <p>工具可以替换，但习惯不能外包。真正的资产是你持续外化的经验、判断、故事和语料。</p>
+          </article>
+          <article class="card">
+            <span class="tag rose">04</span>
+            <h3>不是乱说话</h3>
+            <p>“用嘴思考”不是被嘴带着跑，而是训练用更短、更清楚、更有结构的语言表达。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="model">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Core Model</div>
+            <h2>从脑内团块到智力资产。</h2>
+          </div>
+          <p class="section-desc">
+            大脑里的想法通常是压缩态的：好几个念头混在一起，信号和噪音同时存在。说出来以后，AI 才能接住、整理、扩展、重组，并让它产生复利。
+          </p>
+        </div>
+
+        <div class="flow" aria-label="从想法到资产的流程">
+          <div class="flow-step">
+            <span>Step 1</span>
+            <b>意识边界</b>
+            <p>把混在一起的念头说出来，分清信号和噪音。</p>
+          </div>
+          <div class="flow-step">
+            <span>Step 2</span>
+            <b>语言结构</b>
+            <p>用嘴把团块化意识推入句子、顺序和逻辑。</p>
+          </div>
+          <div class="flow-step">
+            <span>Step 3</span>
+            <b>AI 整理</b>
+            <p>让 AI 进行摘要、分类、补漏、改写和审计。</p>
+          </div>
+          <div class="flow-step">
+            <span>Step 4</span>
+            <b>内容驱动</b>
+            <p>转成微博、长文、视频脚本、项目文档或书稿。</p>
+          </div>
+          <div class="flow-step">
+            <span>Step 5</span>
+            <b>资产复利</b>
+            <p>语料越多，AI 越理解你的语感、领域和判断方式。</p>
+          </div>
+        </div>
+
+        <div style="height: 18px"></div>
+
+        <div class="callout">
+          <p><strong>课程金句：</strong>真正限制我们输出的不是输入设备，而是意识的清晰程度。AI 时代的关键动作，是把消费和反刍时间转化为创造时间。</p>
+        </div>
+      </section>
+
+      <section id="tools">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Tools</div>
+            <h2>工具选择和硬件心智。</h2>
+          </div>
+          <p class="section-desc">
+            课程里对工具的态度很明确：Typeless 更偏结构化输出和激进体验，Vocore 更偏交互自定义。豆包在国内语音输入里算较好，但距离“零摩擦脑机接口”仍有差距。
+          </p>
+        </div>
+
+        <div class="compare">
+          <table>
+            <thead>
+              <tr>
+                <th>对象</th>
+                <th>课程里的定位</th>
+                <th>适合什么人</th>
+                <th>注意点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Typeless</strong></td>
+                <td>主力推荐，更激进，结构化语言组织更强。</td>
+                <td>想把语音直接变成可发送、可交付文字的人。</td>
+                <td>稳定性极重要，一旦丢内容几次，人会退回键盘。</td>
+              </tr>
+              <tr>
+                <td><strong>Vocore</strong></td>
+                <td>交互自定义空间更大，可实现功能更多。</td>
+                <td>想用旋钮、自定义按钮、多按键设备控制流程的人。</td>
+                <td>课程认为内容结构化逻辑略弱于 Typeless。</td>
+              </tr>
+              <tr>
+                <td><strong>Whisper / 本地版</strong></td>
+                <td>可自己搭建底层，本地调用开源模型。</td>
+                <td>愿意折腾、重视隐私或想减少订阅依赖的人。</td>
+                <td>难点不在转写，而在低摩擦入口、稳定性和系统级体验。</td>
+              </tr>
+              <tr>
+                <td><strong>豆包 / 微信语音输入</strong></td>
+                <td>豆包是国内较好，微信语音输入再低一档。</td>
+                <td>只想体验语音输入提速的人。</td>
+                <td>如果还要频繁手改字，整体提速通常会被打回去。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="height: 18px"></div>
+
+        <div class="grid three">
+          <article class="card">
+            <span class="tag teal">硬件最小集</span>
+            <h3>删除 + 回车</h3>
+            <p>在高熟练度模式下，你真正需要的不是完整键盘，而是少数几个高频控制按钮。</p>
+          </article>
+          <article class="card">
+            <span class="tag amber">替代方案</span>
+            <h3>多按键鼠标</h3>
+            <p>没有自定义小键盘时，多按键鼠标可以承接回车、删除、开始录音、暂停等动作。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">手机入口</span>
+            <h3>Action Button</h3>
+            <p>Action Button 是部分新款 iPhone 左侧、音量键上方的实体按钮，不是屏幕上的小圆圈。可以在“设置 > 操作按钮”里指定它触发快捷指令，用来一按就录入灵感。没有这个实体按钮的机型，也可以用锁屏小组件、快捷指令图标或屏幕上的 AssistiveTouch 小圆点替代。</p>
+          </article>
+        </div>
+
+        <div style="height: 18px"></div>
+
+        <div class="grid two">
+          <article class="card">
+            <span class="tag teal">推荐设置</span>
+            <h3>Action Button 一键记录想法</h3>
+            <p>先在“快捷指令”里新建一个“记录想法”快捷指令：用“听写文本”接收你说的话，再“追加到备忘录”或保存到 iCloud 文件。之后进入“设置 > 操作按钮”，滑到“快捷指令”，选择“记录想法”。以后长按机身左侧实体按钮，就能开始记录。</p>
+          </article>
+          <article class="card">
+            <span class="tag amber">没有实体按钮</span>
+            <h3>用辅助触控小圆点替代</h3>
+            <p>你截图里的页面是“设置 > 辅助功能 > 触控 > 辅助触控”。在“自定义操作”里，把“轻点两下”或“长按”设置为“快捷指令 > 记录想法”。这样点屏幕上的小圆点，也能快速触发同一个记录流程。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="scenes">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Use Cases</div>
+            <h2>四个必须迁移到“从嘴开始”的场景。</h2>
+          </div>
+          <p class="section-desc">
+            课程反复强调，Typeless 需要应用于所有思考和输出场景。关键不是某一次转写很准，而是让“说给 AI 听”成为你处理事情的默认入口。
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <span class="tag teal">逻辑思辨</span>
+            <h3>超过 2 分钟的思考，倒出来。</h3>
+            <p>大脑工作记忆很小，闷着想容易进入思维反刍或思维压缩。说出来可以把多线程展开，避免反复重复同一个叙事。</p>
+          </article>
+          <article class="card">
+            <span class="tag amber">内容创作</span>
+            <h3>微博、长文、视频、书，都从嘴开始。</h3>
+            <p>内容输出的电池来自灵感记录。不要等到坐在电脑前才创作，散步、洗澡、通勤时的灵感都应该被捕捉。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">私事整理</span>
+            <h3>把内耗变成外部对象。</h3>
+            <p>把千头万绪先全部说出来，再让 AI 分类、排序、提炼下一步。命名以后，情绪强度通常会下降。</p>
+          </article>
+          <article class="card">
+            <span class="tag rose">任务规划</span>
+            <h3>厚任务先告诉 Agent，不要先告诉人。</h3>
+            <p>复杂任务先口述给 AI，让它补足背景、边界、标准和交付格式，再生成给人看的文档或网页。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Workflow</div>
+            <h2>晨间启动：视觉化 + 口述化。</h2>
+          </div>
+          <p class="section-desc">
+            录音最后一段讲的是一个典型“发愿/任务启动”流程。由于原始转写错词较多，这里按语义整理为可执行版本。
+          </p>
+        </div>
+
+        <div class="grid three">
+          <article class="card">
+            <span class="tag teal">第一步</span>
+            <h3>切断默认模式网络</h3>
+            <p>起床后一小时尽量不要刷手机。刷手机会把你带回高刺激、低创造的反刍网络。主动说话和表达，会帮助切换状态。</p>
+          </article>
+          <article class="card">
+            <span class="tag amber">第二步</span>
+            <h3>视觉化过程，不是结果</h3>
+            <p>想健身时，不要只想象马甲线，而要想象穿鞋、出门、到健身房、完成具体动作的全过程。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">第三步</span>
+            <h3>一边想象，一边说出来</h3>
+            <p>这是同时说给大脑和 AI 听。说出来会调动语言、听觉和主动思考系统，并影响一天的注意力过滤。</p>
+          </article>
+        </div>
+
+        <div style="height: 18px"></div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>如果状态不好，直接说状态</h3>
+            <p>比如：“我现在状态不太好，这件事比我想象中难，我有点焦虑。我接下来打算先做最小一步。”当你命名状态，并看到或听到它，状态会从脑内循环变成外部对象。</p>
+          </article>
+          <article class="card">
+            <h3>大脑应该像梅西一样省力</h3>
+            <p>大脑不应该时时刻刻高负荷运转。平时保持通透和空，真正重要机会出现时再全力启动。任何小想法超过 1 到 2 分钟，就说出来，让大脑空掉。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="plan">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Practice Plan</div>
+            <h2>7 天把语音输出变成默认动作。</h2>
+          </div>
+          <p class="section-desc">
+            课程里说短期会难受，但通常一周左右会变顺。下面是给新同学的练习安排，目标不是完美，而是先把“从嘴开始”的神经回路建立起来。
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="day">
+            <div class="day-label">Day 1</div>
+            <div>
+              <h3>安装并对比 10 分钟</h3>
+              <p>分别体验 Typeless、Whisperflow 或你已有的语音输入。重点感受：说完后能否不改字、直接发。</p>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-label">Day 2</div>
+            <div>
+              <h3>练习“少用键盘”</h3>
+              <p>把一天里 30% 的普通文字输出改成语音，包括搜索、聊天、给 AI 下指令。</p>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-label">Day 3</div>
+            <div>
+              <h3>通勤路上创造一次</h3>
+              <p>不要刷信息流，改成口述一段想法、一个选题或一个任务背景。</p>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-label">Day 4</div>
+            <div>
+              <h3>把私事倒出来</h3>
+              <p>说 5 到 10 分钟，把脑子里所有焦虑、待办、卡点全部倒给 AI，让它帮你分类和排序。</p>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-label">Day 5</div>
+            <div>
+              <h3>厚任务先给 Agent</h3>
+              <p>选择一个要交代给别人的任务，先口述给 AI，让它生成一份清晰的任务说明。</p>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-label">Day 6</div>
+            <div>
+              <h3>散步输出 30 分钟</h3>
+              <p>前 10 分钟进入状态，后 20 分钟持续讲一个主题。不要追求精确，追求把压缩经验展开。</p>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-label">Day 7</div>
+            <div>
+              <h3>复盘输出量和摩擦点</h3>
+              <p>统计本周说了多少字、多少次、哪些场景最顺、哪里还需要键盘。优化你的按钮、模板和资料库入口。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="templates">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">Templates</div>
+            <h2>三个可以直接复制的口述模板。</h2>
+          </div>
+          <p class="section-desc">
+            对新手来说，最难的不是工具，而是不知道该怎么开口。下面三个模板分别对应晨间启动、任务布置和内容创作。
+          </p>
+        </div>
+
+        <div class="grid three">
+          <article class="prompt">
+            <div class="prompt-head">
+              <span>晨间启动</span>
+              <button class="copy" type="button" data-copy="morning">复制</button>
+            </div>
+            <pre id="morning">请帮我整理今天的晨间启动。我会口述今天要做的事、当前状态和担心的问题。
+
+你的任务：
+1. 提取今天最重要的 3 件事。
+2. 把每件事改写成具体下一步。
+3. 标出我现在的情绪和阻力。
+4. 给我一个 90 分钟内可以启动的行动顺序。
+5. 语气要清醒、直接、能让我开始动。</pre>
+          </article>
+
+          <article class="prompt">
+            <div class="prompt-head">
+              <span>任务布置</span>
+              <button class="copy" type="button" data-copy="task">复制</button>
+            </div>
+            <pre id="task">我接下来会口述一个要交给别人执行的任务。请不要只总结，请帮我生成一份对执行者友好的任务说明。
+
+请包含：
+1. 背景和目标。
+2. 交付物是什么。
+3. 必须满足的标准。
+4. 需要避免的误区。
+5. 时间节点和优先级。
+6. 对方如果不确定，应该先问哪些问题。</pre>
+          </article>
+
+          <article class="prompt">
+            <div class="prompt-head">
+              <span>内容创作</span>
+              <button class="copy" type="button" data-copy="content">复制</button>
+            </div>
+            <pre id="content">我会口述一段还不成型的想法。请把它整理成可继续创作的内容资产。
+
+请输出：
+1. 一句话核心观点。
+2. 3 到 5 个分论点。
+3. 可用于微博/小红书的短版本。
+4. 可用于长文的提纲。
+5. 可用于短视频的 60 秒脚本。
+6. 需要我补充的事实、案例或数据。</pre>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">FAQ</div>
+            <h2>给新同学常见问题的简短回答。</h2>
+          </div>
+          <p class="section-desc">
+            这些回答适合直接发给刚开始试 Typeless 的朋友，帮他们少走一点弯路。
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>手机和电脑的 Typeless 历史会互相调用吗？</h3>
+            <p>按目前官方说明，Typeless 不把录音、转写和上下文保存在服务器上，历史更偏本机。不要把 Typeless 当资料库，要把内容输入到 Notion、飞书、Obsidian、Apple Notes、Google Docs 等跨端容器里。</p>
+          </article>
+          <article class="card">
+            <h3>为什么不用普通语音输入就行？</h3>
+            <p>如果你说完还要频繁改字、改标点、改结构，摩擦仍然很高。课程强调的是说完后 0.5 秒内几乎可以直接发送。</p>
+          </article>
+          <article class="card">
+            <h3>我说得不够精准怎么办？</h3>
+            <p>一开始不需要每个字都完美。先把语义释放出来，再让 AI 整理。但要逐步训练自己减少“乱辞”，用更少的话讲清楚。</p>
+          </article>
+          <article class="card">
+            <h3>这对内容创作真的有用吗？</h3>
+            <p>有用的关键在语料积累。你说出来的经验、故事、判断会变成 AI 可处理的资产，之后可以反复转成短文、脚本、长文和课程。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <p class="quote">
+          最终要养成的不是“会用一个软件”，而是任何思考超过 1 到 2 分钟，就把它说出来，让大脑重新空掉，让 AI 接住后续的整理和放大。
+        </p>
+        <div class="footer">
+          <p>整理说明：本页根据一次课程录音转写和现场笔记整理，个别品牌名、术语和原话可能需要结合原课程再次校对。若要公开传播，请确认原课程版权和分享范围允许。</p>
+          <p>建议发送方式：直接把本 HTML 文件发给对方，或上传到你常用的在线文档/网页托管工具后分享链接。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-copy]");
+    buttons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const id = button.getAttribute("data-copy");
+        const text = document.getElementById(id).innerText;
+        try {
+          await navigator.clipboard.writeText(text);
+          const old = button.textContent;
+          button.textContent = "已复制";
+          setTimeout(() => {
+            button.textContent = old;
+          }, 1200);
+        } catch (error) {
+          button.textContent = "复制失败";
+          setTimeout(() => {
+            button.textContent = "复制";
+          }, 1200);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
